@@ -25,18 +25,18 @@ template<class T> Iterator<T>::Iterator()
     current=NULL;
 
 }
+template<typename T> T Iterator<T>::operator*()
+{
+    return current->data;
+
+}
+//Test
 template<class T> Iterator<T>::Iterator(Node<T>* node)
 {
     current=node;
 
 }
-template<typename T> Iterator<T> Iterator<T>::operator=(Iterator<T> node)
-{
-    Iterator<T> temp;
-    temp.current=node.current;
-
-    return temp;
-}
+//Test
 template<typename T> bool Iterator<T>::operator!=(Iterator<T> node)
 {
     if (current==node.current)
@@ -49,8 +49,6 @@ template<typename T> bool Iterator<T>::operator!=(Iterator<T> node)
     }
 
 }
-
-
 template<typename T> Iterator<T> Iterator<T>::operator++()
 {
     current=current->next;
@@ -63,10 +61,13 @@ template<typename T> Iterator<T> Iterator<T>::operator--()
     return *this;
 
 }
-template<typename T> T Iterator<T>::operator*()
+template<typename T> Iterator<T> Iterator<T>::operator=(Iterator<T> node)
 {
-    return current->data;
+    Iterator<T> temp;
+    temp.current=node.current;
 
+    return temp;
 }
+
 
 #endif
