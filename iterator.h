@@ -63,10 +63,10 @@ template<typename T> Iterator<T> Iterator<T>::operator--()
 }
 template<typename T> Iterator<T> Iterator<T>::operator=(Iterator<T> node)
 {
-    Iterator<T> temp;
-    temp.current=node.current;
+    Iterator<T> aux;
+    aux.current=node.current;
 
-    return temp;
+    return aux;
 }
 
 
