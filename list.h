@@ -62,12 +62,12 @@ template<typename T> void List<T>::push_front(T value)
         start->prev=start;
 
     }
-    aux->prev=start->prev;
+    aux->prev=start->prev; // No está muy bien
     aux->next=start;
     start->prev=aux;
     start=aux;
     nodes++;
-    aux=NULL;
+    aux=NULL; // No es necesario
 }
 template<typename T> Iterator<T> List<T>::begin()
 {
@@ -94,14 +94,14 @@ template<typename T> void List<T>::push_back(T value)
     if (start==NULL)
     {
 
-        start=aux;
+        start=aux; // Falta
         aux->prev=start;
     }else{
         start->prev->next=aux;
         aux->prev=start->prev;
         start->prev=aux;
     }
-    aux=NULL;
+    aux=NULL; // No es necesario
 }
 template<typename T> void List<T>::pop_front()
 {
@@ -112,11 +112,11 @@ template<typename T> void List<T>::pop_front()
         start->prev->next=aux;
         delete start;
         start=aux;
-        aux=NULL;
+        aux=NULL;  // No es necesario
         nodes--;
     }else{
         delete start;
-        start=NULL;
+        start=NULL;  // No es necesario
         nodes--;
     }
 }
@@ -128,7 +128,7 @@ template<typename T> T List<T>::get(int position)
     for(int x=0;x!=position;x++)
     {
 
-        rpta=aux->data;
+        rpta=aux->data; // No necesitar estar guardando la respuesta en cada paso
         aux=aux->next;
     }
     aux= NULL;
@@ -151,7 +151,7 @@ template<typename T> void List<T>::pop_back()
 
     }else{
         delete start;
-        start=NULL;
+        start=NULL;  // No es necesario
         nodes--;
     }
 }
@@ -195,28 +195,29 @@ template<typename T> void List<T>::clear()
         }
         nodes=0;
         delete start;
-        start=NULL;
+        start=NULL; 
     }
 }
 
 template<typename T> T List<T>::front()
 {
 
-    return(start->data);
+    return(start->data); // Falta controlar el caso de lista vacía
 
 }
 
 template<typename T> T List<T>::back()
 {
 
-    return(start->prev->data);
+    return(start->prev->data); // Falta controlar el caso de lista vacía
+
 
 }
 template<typename T> bool List<T>::empty()
 {
     //Arreglar
     bool a=true;
-    if(start==NULL)
+    if(start==NULL) // Esto podría ser return !start;
     {
         return a;
     }else{

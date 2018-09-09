@@ -39,7 +39,7 @@ template<class T> Iterator<T>::Iterator(Node<T>* node)
 //Test
 template<typename T> bool Iterator<T>::operator!=(Iterator<T> node)
 {
-    if (current==node.current)
+    if (current==node.current) // Podría ser return current != node.current;
     {
         return false;
 
@@ -64,7 +64,7 @@ template<typename T> Iterator<T> Iterator<T>::operator--()
 template<typename T> Iterator<T> Iterator<T>::operator=(Iterator<T> node)
 {
     Iterator<T> aux;
-    aux.current=node.current;
+    aux.current=node.current; // No deberías crear un nuevo iterador, lo ideal es retornar el mismo iterador
 
     return aux;
 }
